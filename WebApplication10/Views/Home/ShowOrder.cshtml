@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "ShowOrder";
+}
+
+<h2>ShowOrder</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Total Price</th>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <!-- Add other product-related fields as needed -->
+        </tr>
+    </thead>
+    <tbody>
+      
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Product image</th>
+                    <th scope="col">Create at</th>
+             
+                    <th scope="col">Total price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in ViewBag.OrdersWithProducts)
+        {
+                <tr>
+                        <th scope="row">@order.Order.Id</th>
+                        <td>@order.Product.Title</td>
+
+                        <td>	<img style="max-width: 100px; max-height: 100px;" src="@Url.Content(order.Product.ImagePath )" alt="Course Image" /></td>
+                        <td>@order.Order.OrderDate</td>
+
+                        <td>@order.Order.TotalPrice</td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </tbody>
+</table>

@@ -1,0 +1,84 @@
+﻿@model WebApplication10.Models.Product
+@{
+    ViewData["Title"] = "Details";
+}
+<h2 style="color: gray; margin: 5px;">Product Details</h2>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <!-- Product main img -->
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img">
+                    <div class="product-preview">
+                        <img src="@Html.DisplayFor(model => model.ImagePath)" alt="Mô tả ảnh">
+                    </div>
+                </div>
+            </div>
+            <!-- /Product main img -->
+            <!-- Product thumb imgs -->
+            <div class="col-md-2 col-md-pull-5">
+                <div id="product-imgs">
+                    <!-- Add your additional product preview images here -->
+                </div>
+            </div>
+            <!-- /Product thumb imgs -->
+            <!-- Product details -->
+            <div class="col-md-5">
+                <div class="product-details">
+                    <h2 class="product-name">@Html.DisplayFor(model => model.Title)</h2>
+
+                    <div>
+                        <!-- Add your product rating and review link here -->
+                    </div>
+
+                    <div>
+                        <h3 class="product-price">$@Html.DisplayFor(model => model.Price)</h3>
+                        <span class="product-available">In Stock</span>
+                    </div>
+
+                    <div>
+                        <p class=""><strong>Category:</strong> @Html.DisplayFor(model => model.Category.CategoryDescription)</p>
+                    </div>
+
+                    <div>
+                        <p class=""><strong>Author:</strong> @Html.DisplayFor(model => model.Author)</p>
+                    </div>
+
+                    <p><strong>Descrip:</strong> @Html.DisplayFor(model => model.Description)</p>
+                    <ul class="product-btns">
+                        <li><a href="#"><i class="fa fa-heart-o"></i> Add to Wishlist</a></li>
+                        <li><a href="#"><i class="fa fa-exchange"></i> Add to Compare</a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Category:</li>
+                        <li><a href="#">Headphones</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Share:</li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+
+                    <form asp-action="CreateCard" method="post" class="add-to-cart mt-3">
+                        <div class="qty-label">
+                            Qty
+                            <div class="input-group mb-3">
+                                <input type="number" name="quantity" class="form-control text-center" value="1" required>
+                            </div>
+                            <input type="hidden" asp-for="Id" />
+                        </div>
+                        <button type="submit" class="add-to-cart-btn btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+            <!-- /Product details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
